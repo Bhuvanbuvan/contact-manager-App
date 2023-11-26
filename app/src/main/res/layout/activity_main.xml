@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myviewModel"
+            type="com.example.contactinfo.myviewModel.UserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint2"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:text="@={myviewModel.inputName}"
+                android:id="@+id/contactname"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="55dp"
+                android:hint="enter name"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/contactemail"
+                app:layout_constraintEnd_toStartOf="@+id/save"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.375" />
+
+            <EditText
+                android:text="@={myviewModel.inputEmail}"
+                android:id="@+id/contactemail"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+
+                android:layout_marginEnd="56dp"
+                android:hint="enter the email"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/clear"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.673" />
+
+            <Button
+                android:onClick="@{()->myviewModel.saveOrUpdate()}"
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="58dp"
+                android:layout_marginBottom="8dp"
+                android:background="#03A9F4"
+                android:contentDescription="saveorupdate"
+                android:text="@={myviewModel.saveOrUpdateButtonText}"
+                app:layout_constraintBottom_toTopOf="@+id/clear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/contactname"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:onClick="@{()->myviewModel.clearAllORDelete()}"
+                android:id="@+id/clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="47dp"
+                android:layout_marginBottom="30dp"
+                android:background="#03A9F4"
+                android:contentDescription="clearallordelete"
+                android:text="@={myviewModel.clearallOrDeleteButtonText}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/contactemail"
+                app:layout_constraintTop_toBottomOf="@+id/save" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraint2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
